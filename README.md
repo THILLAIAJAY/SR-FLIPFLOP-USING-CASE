@@ -34,48 +34,39 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-1. Type the program in Quartus software.
-2. Compile and run the program.
-3. Generate the RTL schematic and save the logic diagram.
-4. Create nodes for inputs and outputs to generate the timing diagram.
-5. For different input combinations generate the timing diagram.
+/* write all the steps invloved */                      
+
+*1*.Open Quartus-II and create a new verilog file.                
+*2*.Then code the program and run it.                   
+*3*.Check the RTL logic is correct.                        
+*4*.set end time and insert node.                      
+*5*.Get the waveform and write the result.
 
 **PROGRAM**
-*\
-Developed by:Thilai ajay.L
-RegisterNumber: 24008308
 
-*\
-module ex06(q,q_bar, s, r, clk, reset);
-input s, r, clk, reset;
-output reg q;
-output q_bar;
-
-always@(posedge clk) begin
-if (!reset) q<=0;
-else
-begin
-case({s,r})
-2'b00:q<=q; 
-2'b01:q<=1'b0; 
-2'b10:q<=1'b1;
-2'b11:q<=1'bx;
-endcase
-end
-end
-assign q_bar=~q;
-endmodule
+/* Program for flipflops and verify its truth table in quartus using Verilog programming.  
 ```
+module Exp6(S,R,clk,Q,Qbar);
+input S,R,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk) begin Q=S|((~R)&Q);
+Qbar=~Q;
+end endmodule
+```
+Developed by:thillaiajay.l RegisterNumber:
+*/24008308
 
 **RTL LOGIC FOR FLIPFLOPS**
 
-![Screenshot 2024-12-02 205851](https://github.com/user-attachments/assets/d4e62827-e9f5-4b2e-8b30-ff59128fd9f9)
+![387129005-94e5229b-a0dd-420a-b998-ac003a051b89](https://github.com/user-attachments/assets/2ed94e8d-075a-46e4-8937-43264a0d8102)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
 
-![Screenshot 2024-12-02 205905](https://github.com/user-attachments/assets/aa0a98b6-0a6b-4452-91da-127120f2aa61)
-
+![387129314-e491ec9c-48c7-45e7-93b8-1c6bce4faf3c](https://github.com/user-attachments/assets/47ffe5e6-3963-4235-b15b-b0c5dc80eb0f)
 
 **RESULTS**
 
-Thus the program to implement a SR flipflop using verilog and validating their functionality using their functional tables is successfully completed
+Thus the given SR flipflops are designed and verified using Verilog programming
